@@ -11,8 +11,7 @@ class AppModule {
     // ✅ Enable CORS with specific frontend origin
     this.app.use(
       cors({
-        // origin: 'http://localhost:5173',
-        origin: '*',
+        origin: 'https://todo-frontend-pied-phi.vercel.app',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true, // Allow cookies & authentication headers
       }),

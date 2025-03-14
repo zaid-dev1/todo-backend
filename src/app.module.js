@@ -11,9 +11,9 @@ class AppModule {
  
     this.app.use(
       cors({
-        // origin:
-        //   'https://todo-frontend-f46d5m8mt-zaids-projects-cbe7f58d.vercel.app',
-        origin: '*',
+        origin:
+          'https://todo-frontend-f46d5m8mt-zaids-projects-cbe7f58d.vercel.app',
+       
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
       }),

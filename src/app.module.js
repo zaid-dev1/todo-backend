@@ -11,7 +11,8 @@ class AppModule {
     // ✅ Enable CORS with specific frontend origin
     this.app.use(
       cors({
-        origin: 'http://localhost:5173', // Allow requests from your frontend
+        // origin: 'http://localhost:5173',
+        origin: '*',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true, // Allow cookies & authentication headers
       }),
@@ -26,9 +27,9 @@ class AppModule {
       await this.connectDatabase();
       TaskModule(this.app); // ✅ Register Task Module after DB connection
 
-      const PORT = process.env.PORT || 3000;
+      const PORT = process.env.PORT || 3000; // ✅ Use the provided PORT
       this.app.listen(PORT, () => {
-        console.log(`🚀 Server running on http://localhost:${PORT}`);
+        console.log(`🚀 Server running on port ${PORT}`);
       });
     } catch (error) {
       console.error('❌ Server startup failed:', error);

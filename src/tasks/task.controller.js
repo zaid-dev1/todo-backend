@@ -3,7 +3,7 @@ const taskService = require('./task.service');
 
 const router = express.Router();
 
-// ✅ Create Task
+//  Create Task
 router.post('/', async (req, res) => {
   try {
     if (!req.body.description || !req.body.name) {
@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-// ✅ Get All Tasks
+//  Get All Tasks
 router.get('/', async (req, res) => {
   try {
     const tasks = await taskService.findAll();
@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ✅ Delete Task
+//  Delete Task
 router.delete('/:id', async (req, res) => {
   try {
     const result = await taskService.delete(req.params.id);

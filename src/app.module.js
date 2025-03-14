@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); // ✅ Import CORS middleware
+const cors = require('cors'); 
 require('dotenv').config();
 const TaskModule = require('./tasks/tasks.module');
 
@@ -8,25 +8,25 @@ class AppModule {
   constructor() {
     this.app = express();
 
-    // ✅ Enable CORS with specific frontend origin
+ 
     this.app.use(
       cors({
         origin: 'https://todo-frontend-pied-phi.vercel.app',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true, // Allow cookies & authentication headers
+        credentials: true, 
       }),
     );
 
-    this.app.use(express.json()); // ✅ Enable JSON parsing
+    this.app.use(express.json()); 
     this.startServer();
   }
 
   async startServer() {
     try {
       await this.connectDatabase();
-      TaskModule(this.app); // ✅ Register Task Module after DB connection
+      TaskModule(this.app); 
 
-      const PORT = process.env.PORT || 3000; // ✅ Use the provided PORT
+      const PORT = process.env.PORT || 8080; 
       this.app.listen(PORT, () => {
         console.log(`🚀 Server running on port ${PORT}`);
       });

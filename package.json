@@ -18,11 +18,14 @@
     "@nestjs/core": "^11.0.1",
     "@nestjs/mongoose": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
+    "@nestjs/platform-socket.io": "^11.0.11",
+    "@nestjs/websockets": "^11.0.11",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "mongoose": "^8.12.1",
     "reflect-metadata": "^0.2.0",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "@babel/core": "7.26.9",

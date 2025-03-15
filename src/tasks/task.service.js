@@ -1,10 +1,19 @@
 const Task = require('./task.schema');
 
 class TaskService {
-  async create(name,description) {
+  constructor(io) {
+    this.io = io; // Store socket.io instance
+  }
+
+  async create(name, description) {
     try {
-      const task = new Task({name, description });
-      return await task.save();
+      const task = new Task({ name, description });
+      const savedTask = await task.save();
+
+      // Notify all clients about the new task
+      this.io.emit('taskCreated', savedTask);
+
+      return savedTask;
     } catch (error) {
       throw new Error('Error creating task: ' + error.message);
     }
@@ -24,6 +33,10 @@ class TaskService {
       if (!task) {
         throw new Error('Task not found');
       }
+
+      // Notify all clients about task deletion
+      this.io.emit('taskDeleted', id);
+
       return { message: 'Task deleted successfully' };
     } catch (error) {
       throw new Error('Error deleting task: ' + error.message);
@@ -31,4 +44,4 @@ class TaskService {
   }
 }
 
-module.exports = new TaskService();
+module.exports = (io) => new TaskService(io);
